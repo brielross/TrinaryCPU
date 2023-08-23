@@ -90,7 +90,8 @@ impl ALU {
         return match self.operation.as_str() {
             "0" => { self.add_trip_strings() },
             "1" => { self.sub_trip_strings() },
-            _ => { self.check_less_than() }
+            "2" => { self.check_less_than() },
+            _ => { String::from("000000000000") }
         }
     }
 }
