@@ -1,6 +1,9 @@
 mod alu;
 mod pc;
 mod utils;
+mod memory;
+
+use std::collections::HashMap;
 
 fn main() {
     // TODO: make initializer
@@ -10,9 +13,21 @@ fn main() {
         curr_instruction_index: String::from("000000000000")
     };*/
 
-    // TODO: make instruction memory
+    // Makes memory (both instruction and data)
+    /*let mut memory = memory::Memory {
+        memory_data: HashMap::new()
+    };
 
-    // TODO: make data memory (Should use same memory as instructions memory)
+    memory.update_memory(String::from("00"), String::from("000"));
+    memory.update_memory(String::from("01"), String::from("001"));
+    memory.update_memory(String::from("02"), String::from("002"));
+
+    println!(
+        "{}, {}, {}", 
+        memory.access_memory(&String::from("00")), 
+        memory.access_memory(&String::from("01")), 
+        memory.access_memory(&String::from("02"))
+    )*/
 
     // TODO: make registers
 
