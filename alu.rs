@@ -1,7 +1,7 @@
 pub struct ALU {
     pub input_1: String,
     pub input_2: String,
-    pub operation: String
+    pub operation: char
 }
 
 impl ALU {
@@ -12,7 +12,7 @@ impl ALU {
         
         // Loop through each index and add and adjust carry
         let mut carry = 0;
-        let mut result = String::from("");
+        let mut result = "".to_string();
         for it in rev_in_1.iter().zip(rev_in_2.iter_mut()) {
             let (in_trip_1, in_trip_2) = it;
             let in_value_1 = *in_trip_1 as u32 - '0' as u32;
@@ -27,7 +27,7 @@ impl ALU {
             result = format!("{}{}", trip_sum, result);
         }
 
-        return String::from(result)
+        return result
     }
 
     fn sub_trip_strings(&self) -> String {
@@ -37,7 +37,7 @@ impl ALU {
         
         // Loop through each index and subtract and adjust carry
         let mut carry = 0;
-        let mut result = String::from("");
+        let mut result = "".to_string();
         for it in rev_in_1.iter().zip(rev_in_2.iter_mut()) {
             let (in_trip_1, in_trip_2) = it;
             let in_value_1 = *in_trip_1 as u32 - '0' as u32;
@@ -53,7 +53,7 @@ impl ALU {
             result = format!("{}{}", trip_sum, result);
         }
 
-        return String::from(result)
+        return result
     }
 
     fn check_less_than(&self) -> String {
@@ -63,7 +63,7 @@ impl ALU {
         
         // Loop through each index and subtract and adjust carry
         let mut carry = 0;
-        let mut result = String::from("");
+        let mut result = "".to_string();
         for it in rev_in_1.iter().zip(rev_in_2.iter_mut()) {
             let (in_trip_1, in_trip_2) = it;
             let in_value_1 = *in_trip_1 as u32 - '0' as u32;
@@ -80,18 +80,18 @@ impl ALU {
         }
 
         if carry > 0 {
-            return String::from("000000000002")
+            return "000000000002".to_string()
         } else {
-            return String::from("000000000000")
+            return "000000000000".to_string()
         }
     }
 
     pub fn calc(&self) -> String {
-        return match self.operation.as_str() {
-            "0" => { self.add_trip_strings() },
-            "1" => { self.sub_trip_strings() },
-            "2" => { self.check_less_than() },
-            _ => { String::from("000000000000") }
+        return match self.operation {
+            '0' => { self.add_trip_strings() },
+            '1' => { self.sub_trip_strings() },
+            '2' => { self.check_less_than() },
+            _ => { "000000000000".to_string() }
         }
     }
 }

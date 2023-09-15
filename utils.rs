@@ -8,3 +8,17 @@ pub fn trip_string_to_decimal(trip_string: String) -> u32 {
     }
     return total
 } 
+
+pub fn trip_string_is_zero(trip_string: String) -> bool {
+    for trip in trip_string.chars() {
+        if trip != '0' {
+            return false
+        }
+    }
+    return true
+}
+
+pub fn substring(trip_string: &String, start_index: usize, end_index: usize) -> String {
+    let slice = &trip_string.as_str()[start_index..end_index];
+    return slice.to_string();
+}
